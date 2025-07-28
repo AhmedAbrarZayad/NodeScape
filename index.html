@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeScape - Graph Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="input-panel">
+            <h2>Graph Input</h2>
+            <div class="buttons">
+                <button id="directed" class="active">Directed</button>
+                <button id="undirected">Undirected</button>
+            </div>
+            <textarea id="textArea" rows="12" cols="30" 
+                placeholder=
+                    "Enter edges (one per line):
+                    1 2
+                    2 3
+                    3 4
+                    1 4
+
+                    Or adjacency list:
+                    1: 2 3
+                    2: 3 4
+                    3: 1"></textarea>
+            <div class="controls">
+                <button id="visualize">Visualize Graph</button>
+                <button id="clear">Clear All</button>
+                <button id="export">Export as SVG</button>
+            </div>
+            <div class="algorithm-section">
+                <h3>Algorithms</h3>
+                <div class="start-node">
+                    <label for="startNode">Start Node:</label>
+                    <select id="startNode">
+                        <option value="">Select a node</option>
+                    </select>
+                </div>
+                <div class="algo-buttons">
+                    <button id="runBFS">Run BFS</button>
+                    <button id="runDFS">Run DFS</button>
+                    <button id="resetColors">Reset Colors</button>
+                </div>
+            </div>
+            <div id="algorithm-info">
+                <div id="queue-stack-display"></div>
+                <div id="visited-display"></div>
+                <div id="traversal-order"></div>
+            </div>
+        </div>
+        
+        <div class="visualization-panel">
+            <h2>Graph Visualization</h2>
+            <div class="svg-container">
+                <svg id="graph-svg"></svg>
+            </div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="color-box unvisited"></div>
+                    <span>Unvisited</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box current"></div>
+                    <span>Current</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box visiting"></div>
+                    <span>In Queue/Stack</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box visited"></div>
+                    <span>Visited</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="graph-parser.js"></script>
+    <script src="graph-visualizer.js"></script>
+    <script src="algorithms.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
